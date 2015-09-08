@@ -1,0 +1,12 @@
+header {
+  border: 1px solid #c0c0c0;
+  width: 70%;
+  margin: 0 auto;
+  padding: 2em;
+}
+#logo {
+  height: 100px;
+  width: 100px;
+  background: url("/img/logo.svg");
+  background-size: contain;
+}
