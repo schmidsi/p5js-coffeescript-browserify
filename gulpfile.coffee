@@ -11,6 +11,7 @@ pkg         = require './package.json'
 plumber     = require 'gulp-plumber'
 source      = require 'vinyl-source-stream'
 stylus      = require 'gulp-stylus'
+subtree     = require 'gulp-subtree'
 
 
 delay = (ms, func) -> setTimeout func, ms
@@ -107,6 +108,11 @@ gulp.task 'jade', ->
             pretty: true
         .on 'error', notify.onError("Jade Error: <%= error.message %>")
         .pipe gulp.dest paths.dist.html
+
+
+gulp.task 'deploy', ['stylus', 'browserify', 'jade'], ->
+    return gulp.src(paths.dist.html)
+        .pipe subtree()
 
 
 gulp.task 'default', ['nodemon', 'brower-sync', 'stylus', 'browserify'], ->
